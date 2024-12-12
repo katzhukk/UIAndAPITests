@@ -7,23 +7,19 @@ import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.Cookie;
 
-import static api.AuthorizationApi.getAuthCookie;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class LoginExtension implements BeforeEachCallback{
-    public static LoginResponseModel cookies;
+    public static LoginResponseModel loginModel;
 
-    @Step("Подготовка - Авторизация")
+    @Step("Авторизация пользователя")
     @Override
     public void beforeEach (ExtensionContext context){
-        cookies = getAuthCookie();
-        LoginResponseModel loginModel = getAuthCookie();
+        loginModel = AuthorizationApi.getAuthCookie();
         open("/images/Toolsqa.jpg");
+        getWebDriver().manage().addCookie(new Cookie("userID", loginModel.getUserId()));
         getWebDriver().manage().addCookie(new Cookie("token", loginModel.getToken()));
         getWebDriver().manage().addCookie(new Cookie("expires", loginModel.getExpires()));
-        getWebDriver().manage().addCookie(new Cookie("userID", loginModel.getUserId()));
     }
-
-
 }

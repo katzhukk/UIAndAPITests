@@ -1,7 +1,6 @@
 package api;
 
 import data.TestData;
-import io.restassured.response.Response;
 import models.LoginRequestModel;
 import models.LoginResponseModel;
 
@@ -11,7 +10,9 @@ import static specs.ResponceSpecs.responseSpec200;
 
 public class AuthorizationApi {
     public static LoginResponseModel getAuthCookie(){
-        LoginRequestModel request = new LoginRequestModel(TestData.login, TestData.password);
+        LoginRequestModel request = new LoginRequestModel();
+        request.setUserName(TestData.login);
+        request.setPassword(TestData.password);
 
         return given()
                             .spec(loginRequestSpec)
