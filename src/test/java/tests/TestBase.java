@@ -18,6 +18,8 @@ public class TestBase {
 
     @BeforeAll
     static void setup() {
+        Configuration.browserSize = System.getProperty("browserSize");
+        Configuration.browser = System.getProperty("browser");
         Configuration.browserVersion = System.getProperty("browserVersion");
         Configuration.remote = System.getProperty("urlHost");
         RestAssured.baseURI = "https://demoqa.com";
