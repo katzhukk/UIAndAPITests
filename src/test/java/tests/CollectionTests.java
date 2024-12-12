@@ -12,7 +12,7 @@ public class CollectionTests {
     @Test
     void addBookToCollectionTest(){
 
-        String authData = "{\"userName\": \"testtestov31\", \"password\": \"Testtestov31_%\"}";
+        String authData = "{\"userName\": \"Kate1!\", \"password\": \"Kate1!Kate1!\"}";
 
         Response authResponse = given()
                     .log().uri()

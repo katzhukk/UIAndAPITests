@@ -9,22 +9,30 @@ import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.util.Map;
 
 
 public class TestBase {
 
     @BeforeAll
     static void setup() {
+        Configuration.browserVersion = System.getProperty("browserVersion");
+        Configuration.remote = System.getProperty("urlHost");
         RestAssured.baseURI = "https://demoqa.com";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-    }
 
-    @BeforeEach
-    void allureSelenide() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-    }
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
 
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+    }
 
     @AfterEach
     void addAttachments() {
@@ -32,6 +40,10 @@ public class TestBase {
         Attach.screenshotAs("Last screenshot");
         Attach.browserConsoleLogs();
         Attach.addVideo();
-        Selenide.closeWebDriver();
+    }
+
+    @AfterEach
+    void closeWebDriver() {
+         Selenide.closeWebDriver();
     }
 }
