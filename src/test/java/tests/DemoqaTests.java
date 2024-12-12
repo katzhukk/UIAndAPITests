@@ -1,6 +1,5 @@
 package tests;
 
-import api.AuthorizationApi;
 import api.BookStoreApi;
 import data.TestData;
 import helpers.WithLogin;
