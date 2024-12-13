@@ -8,7 +8,6 @@ import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
@@ -18,12 +17,12 @@ public class TestBase {
 
     @BeforeAll
     static void setup() {
+        RestAssured.baseURI = "https://demoqa.com";
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = System.getProperty("browserSize");
         Configuration.browser = System.getProperty("browser");
         Configuration.browserVersion = System.getProperty("browserVersion");
         Configuration.remote = System.getProperty("urlHost");
-        RestAssured.baseURI = "https://demoqa.com";
-        //Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
