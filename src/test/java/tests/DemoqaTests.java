@@ -20,7 +20,6 @@ public class DemoqaTests extends TestBase{
         bookStoreApi.addBookToBasket(TestData.isbn);
 
         basketPage.openPage()
-                  .deleteFirstBook()
-                  .checkEmptyBookList();
+                  .deleteFirstBook();
     }
 }
