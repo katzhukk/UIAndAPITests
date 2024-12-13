@@ -8,9 +8,7 @@ repositories {
     mavenCentral()
 }
 
-def restAssuredVersion = "5.5.0",
-    allureVersion = "2.29.0",
-        selenideVersion = "7.5.1"
+def allureVersion = "2.29.0"
 
 allure {
     report {
@@ -27,15 +25,14 @@ allure {
 }
 
 dependencies {
-    testImplementation(
-            "io.rest-assured:rest-assured:$restAssuredVersion",
-            "io.rest-assured:json-schema-validator:$restAssuredVersion",
-            "io.qameta.allure:allure-selenide:$allureVersion",
-            "io.qameta.allure:allure-rest-assured:$allureVersion",
-            "com.codeborne:selenide:$selenideVersion",
-            "org.junit.jupiter:junit-jupiter:5.11.3",
-            'org.assertj:assertj-core:3.24.2'
-    )
+    testImplementation 'io.rest-assured:rest-assured:5.5.0'
+            testImplementation    'io.rest-assured:json-schema-validator:5.5.0'
+    testImplementation 'io.qameta.allure:allure-selenide:2.29.0'
+            testImplementation 'io.qameta.allure:allure-rest-assured:2.29.0'
+    testImplementation 'com.codeborne:selenide:7.5.1'
+            testImplementation 'org.junit.jupiter:junit-jupiter:5.11.3'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+
 }
 
 tasks.withType(Test) {
