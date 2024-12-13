@@ -23,7 +23,7 @@ public class TestBase {
         Configuration.browserVersion = System.getProperty("browserVersion");
         Configuration.remote = System.getProperty("urlHost");
         RestAssured.baseURI = "https://demoqa.com";
-        Configuration.baseUrl = "https://demoqa.com";
+        //Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
