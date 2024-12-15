@@ -3,6 +3,7 @@ package pages;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class BasketPage {
@@ -22,7 +23,7 @@ public class BasketPage {
 
     @Step("Проверка успешного удаления книги из корзины")
     public BasketPage checkEmptyBookList(){
-        $(".ReactTable").shouldNotHave(text("Speaking JavaScript"));
+        $(".ReactTable").shouldNotBe(visible);
         return this;
     }
 }
