@@ -21,6 +21,7 @@ public class DemoqaTests extends TestBase{
 
         basketPage.openPage()
                   .deleteFirstBook()
+                  .openPage()
                   .checkEmptyBookList();
     }
 }
