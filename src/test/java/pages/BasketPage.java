@@ -23,7 +23,7 @@ public class BasketPage {
 
     @Step("Проверка успешного удаления книги из корзины")
     public BasketPage checkEmptyBookList(){
-        $(".rt-tbody").shouldNotBe(visible);
+        $("#see-book-Speaking JavaScript").shouldNotBe(visible);
         return this;
     }
 }
