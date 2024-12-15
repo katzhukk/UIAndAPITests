@@ -23,7 +23,7 @@ public class BasketPage {
 
     @Step("Проверка успешного удаления книги из корзины")
     public BasketPage checkEmptyBookList(){
-        $(".ReactTable").shouldNotBe(visible);
+        $(".rt-tbody").shouldNotBe(visible);
         return this;
     }
 }
